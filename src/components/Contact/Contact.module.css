@@ -1,0 +1,12 @@
+.contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .btn {
+    background-color: tomato;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+  }
+  
