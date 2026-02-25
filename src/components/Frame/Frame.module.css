@@ -1,0 +1,52 @@
+.frame {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+  max-width: 600px;
+  font-size: 16px; /* можна прибрати, якщо хочеш спадковий розмір */
+}
+
+.info {
+  /* ключові властивості */
+  line-height: 1.5;            /* множник; actual px = 1.5 * font-size */
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow: hidden;
+  transition: max-height 0.22s ease;
+  position: relative;
+}
+
+/* коли згорнуто — обмежуємо висоту двома рядками */
+.truncate {
+  /* max-height буде встановлено динамічно inline-стилем або класом у px, але
+     лишимо запасний fallback: */
+  max-height: calc(2 * 1.5em); /* fallback, якщо JS не спрацює */
+}
+
+/* градієнт-оверлей праворуч-внизу для ефекту "..." */
+.info.truncate::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 1.5em;              /* висота приблизно одного рядка */
+  width: 3.2em;               /* ширина, щоб закрити край тексту */
+  pointer-events: none;
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+}
+
+/* кнопки */
+.controls {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.toggleBtn {
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  background: white;
+}

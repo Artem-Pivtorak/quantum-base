@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from '../../redux/filterSlice'; 
+import { setFilter } from '../../redux/filterSlice';
 import { selectFilter } from '../../redux/filterSlice';
 
 const Filter = () => {
@@ -13,10 +13,9 @@ const Filter = () => {
   return (
     <input
       type="text"
-      placeholder="Пошук контакту"
+      placeholder="Пошук фреймів за заголовком"
       value={filter}
       onChange={handleChange}
-      style={{ padding: '8px', marginBottom: '15px', width: '100%' }}
     />
   );
 };

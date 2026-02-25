@@ -13,36 +13,19 @@ import storage from 'redux-persist/lib/storage';
 
 import framesReducer from './frames/framesSlice';
 import filterReducer from './filterSlice';
-import sectionsReducer from './sections/sectionsSlice';
-import uiReducer from './uiSlice';
 
-// Конфігурація persist для кожного редюсера, який потрібно зберігати
 const framesPersistConfig = {
   key: 'frames',
   storage,
   whitelist: ['items'],
 };
 
-const sectionsPersistConfig = {
-  key: 'sections',
-  storage,
-  whitelist: ['items'],
-};
-
-const uiPersistConfig = {
-  key: 'ui',
-  storage,
-  whitelist: ['selectedSectionId'],
-};
-
 export const store = configureStore({
   reducer: {
     frames: persistReducer(framesPersistConfig, framesReducer),
-    filter: filterReducer, // фільтр не обов'язково зберігати
-    sections: persistReducer(sectionsPersistConfig, sectionsReducer),
-    ui: persistReducer(uiPersistConfig, uiReducer),
+    filter: filterReducer,
   },
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
