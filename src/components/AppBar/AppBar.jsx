@@ -1,11 +1,8 @@
-import Navigation from '../Navigation/Navigation';
-import AdminToggle from '../AdminToggle/AdminToggle';
+import React from 'react';
 
-const AppBar = ({ isAdmin, setIsAdmin }) => {
+const AppBar = () => {
   return (
     <header>
-      <Navigation />
-      <AdminToggle isAdmin={isAdmin} setIsAdmin={setIsAdmin} />
     </header>
   );
 };

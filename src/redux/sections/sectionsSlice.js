@@ -1,7 +1,8 @@
+// src/redux/sections/sectionsSlice.js
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 const initialState = {
-  items: [], // [{ id, title, image }]
+  items: [], // порожньо, щоб завантажувати з JSON
 };
 
 const sectionsSlice = createSlice({
@@ -17,25 +18,14 @@ const sectionsSlice = createSlice({
           payload: {
             id: nanoid(),
             title,
-            image: image || '📁', // якщо немає зображення, ставимо емодзі
+            image: image || '📁',
           },
         };
       },
     },
-    deleteSection(state, action) {
-      state.items = state.items.filter(section => section.id !== action.payload);
-    },
-    updateSection(state, action) {
-      const { id, title, image } = action.payload;
-      const section = state.items.find(s => s.id === id);
-      if (section) {
-        if (title !== undefined) section.title = title;
-        if (image !== undefined) section.image = image;
-      }
-    },
   },
 });
 
-export const { addSection, deleteSection, updateSection } = sectionsSlice.actions;
-export const selectSections = state => state.sections.items;
+export const { addSection } = sectionsSlice.actions;
+export const selectSections = (state) => state.sections.items;
 export default sectionsSlice.reducer;

@@ -16,19 +16,6 @@ import filterReducer from './filterSlice';
 import sectionsReducer from './sections/sectionsSlice';
 import uiReducer from './uiSlice';
 
-// Конфігурація persist для кожного редюсера, який потрібно зберігати
-const framesPersistConfig = {
-  key: 'frames',
-  storage,
-  whitelist: ['items'],
-};
-
-const sectionsPersistConfig = {
-  key: 'sections',
-  storage,
-  whitelist: ['items'],
-};
-
 const uiPersistConfig = {
   key: 'ui',
   storage,
@@ -37,9 +24,9 @@ const uiPersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    frames: persistReducer(framesPersistConfig, framesReducer),
-    filter: filterReducer, // фільтр не обов'язково зберігати
-    sections: persistReducer(sectionsPersistConfig, sectionsReducer),
+    frames: framesReducer,          // БЕЗ persist
+    filter: filterReducer,
+    sections: sectionsReducer,      // БЕЗ persist
     ui: persistReducer(uiPersistConfig, uiReducer),
   },
   middleware: (getDefaultMiddleware) =>

@@ -1,8 +1,9 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from '../../redux/filterSlice';
 import { selectFilter } from '../../redux/filterSlice';
 
-const Filter = () => {
+const Filter = ({ className }) => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
 
@@ -13,9 +14,10 @@ const Filter = () => {
   return (
     <input
       type="text"
-      placeholder="Пошук фреймів за заголовком"
+      placeholder="Search info..."
       value={filter}
       onChange={handleChange}
+      className={className} // використовуємо переданий клас
     />
   );
 };

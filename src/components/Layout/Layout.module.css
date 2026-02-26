@@ -1,0 +1,11 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* вся висота вікна */
+  overflow: hidden; /* зовнішня прокрутка вимкнена */
+}
+
+.main {
+  flex: 1;
+  overflow: auto; /* прокрутка всередині основного контенту */
+}

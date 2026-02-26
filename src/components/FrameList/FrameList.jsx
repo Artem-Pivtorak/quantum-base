@@ -1,26 +1,20 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { deleteFrame } from '../../redux/frames/framesSlice';
-import { selectFilteredFrames } from '../../redux/frames/framesSlice';
+import { useSelector } from 'react-redux';
+import { selectFilteredFramesBySection } from '../../redux/frames/framesSlice';
 import Frame from '../Frame/Frame';
+import css from './FrameList.module.css';
 
-const FrameList = ({ isAdmin }) => {
-  const dispatch = useDispatch();
-  const frames = useSelector(selectFilteredFrames);
+const FrameList = () => {
+  const frames = useSelector(selectFilteredFramesBySection);
 
-  const handleDelete = (id) => {
-    dispatch(deleteFrame(id));
-  };
+  if (frames.length === 0) {
+    return <div className={css.empty}>no info</div>;
+  }
 
   return (
-    <div>
+    <div className={css.list}>
       {frames.map(frame => (
-        <Frame
-          key={frame.id}
-          data={frame}
-          onDelete={handleDelete}
-          isAdmin={isAdmin}
-        />
+        <Frame key={frame.id} data={frame} />
       ))}
     </div>
   );

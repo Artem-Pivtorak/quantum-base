@@ -5,7 +5,7 @@ const SearchBox = ({ filter, onChange }) => {
   return (
     <div className={css.search}>
       <label>
-        Find contacts by name
+        Find by name
         <input
           type="text"
           value={filter}
