@@ -2,22 +2,20 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from '../../redux/filterSlice';
 import { selectFilter } from '../../redux/filterSlice';
+import { useTranslation } from 'react-i18next';
 
-const Filter = ({ className }) => {
+const Filter = ({ className, placeholder }) => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
-
-  const handleChange = (e) => {
-    dispatch(setFilter(e.target.value));
-  };
+  const { t } = useTranslation();
 
   return (
     <input
       type="text"
-      placeholder="Search info..."
+      placeholder={placeholder || t('searchPlaceholder')}
       value={filter}
-      onChange={handleChange}
-      className={className} // використовуємо переданий клас
+      onChange={(e) => dispatch(setFilter(e.target.value))}
+      className={className}
     />
   );
 };

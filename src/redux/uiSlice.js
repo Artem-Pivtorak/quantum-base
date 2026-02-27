@@ -2,16 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const uiSlice = createSlice({
   name: 'ui',
-  initialState: {
-    selectedSectionId: null, // null означає "всі розділи"
-  },
+  initialState: { selectedSectionTitle: null },
   reducers: {
-    setSelectedSection: (state, action) => {
-      state.selectedSectionId = action.payload;
+    setSelectedSectionTitle: (state, action) => {
+      state.selectedSectionTitle = action.payload;
     },
   },
 });
 
-export const { setSelectedSection } = uiSlice.actions;
-export const selectSelectedSectionId = state => state.ui.selectedSectionId;
+export const { setSelectedSectionTitle } = uiSlice.actions;
+export const selectSelectedSectionTitle = state => state.ui.selectedSectionTitle;
 export default uiSlice.reducer;

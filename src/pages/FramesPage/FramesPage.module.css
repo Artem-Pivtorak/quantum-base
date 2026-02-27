@@ -3,11 +3,10 @@
   height: 100%;
   min-height: calc(100vh - 60px);
   position: relative;
-  background-color: #000; /* чорний фон */
-  overflow: hidden; /* щоб кружечки не виходили за межі */
+  background-color: #000;
+  overflow: hidden;
 }
 
-/* Контейнер для кружечків */
 .circlesBackground {
   position: absolute;
   top: 0;
@@ -15,51 +14,37 @@
   width: 100%;
   height: 100%;
   z-index: 0;
-  pointer-events: none; /* щоб не заважати клікам */
+  pointer-events: none;
 }
 
-/* Окремий кружечок */
 .circle {
   position: absolute;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.3);
   animation: float 20s infinite ease-in-out;
-  width: 10px;
-  height: 10px;
-  opacity: 0.7;
 }
-
-/* Різні розміри та кольори можна задати через додаткові класи або інлайн-стилі */
-/* Для простоти ми згенеруємо їх у JS */
 
 @keyframes float {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(100px, -50px) scale(1.2);
-  }
-  50% {
-    transform: translate(200px, 50px) scale(0.8);
-  }
-  75% {
-    transform: translate(50px, 150px) scale(1.1);
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
+  0% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(100px, -50px) scale(1.2); }
+  50% { transform: translate(200px, 50px) scale(0.8); }
+  75% { transform: translate(50px, 150px) scale(1.1); }
+  100% { transform: translate(0, 0) scale(1); }
 }
 
-/* Основний контент (поверх фону) */
+/* Основний блок (шапка + список) */
 .main {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;  /* ДУЖЕ ВАЖЛИВО для flex-елементів */
+  height: 105%;
   padding: 20px;
-  overflow-y: auto;
+  overflow: hidden; /* щоб сам .main не прокручувався */
   position: relative;
-  z-index: 1; /* щоб бути над кружечками */
+  z-index: 1;
   color: white;
 }
+
 
 /* Заголовок */
 .title {
@@ -67,20 +52,21 @@
   font-weight: 900;
   font-size: 4rem;
   text-align: center;
-  margin: 50px 0px 50px 0;
+  margin: 10px 0px 50px 0;
   text-transform: uppercase;
   letter-spacing: 5px;
   color: white;
   text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff, 0 0 80px #ff00ff; /* неон фіолетовий */
 }
 
-/* Поле пошуку */
+/* Контейнер пошуку */
 .searchContainer {
   display: flex;
   justify-content: center;
-  margin: 50px 0px 100px 0;
+  margin-bottom: 15px; /* відступ перед списком */
 }
 
+/* Поле пошуку */
 .searchInput {
   width: 80%;
   max-width: 600px;
@@ -92,12 +78,37 @@
   color: #aaa;
   box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 0 20px #ff66ff;
   outline: none;
-  transition: box-shadow 0.3s, border-color 0.3s, background 0.3s;
+  transition: box-shadow 0.3s;
 }
 
 .searchInput:focus {
   box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 0 40px #ff66ff;
-  background: #2a2a2a;
+}
+
+.listContainer {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;      /* критично для flex-контейнера */
+  padding-right: 5px;
+}
+
+/* Стилізація скролбару (для краси) */
+.listContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+.listContainer::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+}
+
+.listContainer::-webkit-scrollbar-thumb {
+  background: rgba(255,102,255,0.5);
+  border-radius: 10px;
+}
+
+.listContainer::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,102,255,0.8);
 }
 
 .searchInput::placeholder {

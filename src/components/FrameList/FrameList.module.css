@@ -11,3 +11,40 @@
   padding: 40px;
   font-style: italic;
 } 
+
+.listContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+  scroll-behavior: smooth;
+}
+
+.frameWrapper {
+  width: 100%;
+  transform-origin: top center;
+  margin-bottom: 16px; /* базовий відступ між фреймами */
+}
+
+.listContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+/* Стилізація скролбару (опціонально) */
+.listContainer::-webkit-scrollbar {
+  width: 8px;
+}
+.listContainer::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+}
+.listContainer::-webkit-scrollbar-thumb {
+  background: rgba(255,102,255,0.5);
+  border-radius: 10px;
+}
+.listContainer::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,102,255,0.8);
+}

@@ -1,26 +1,35 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+
+// Компоненти
 import Filter from '../../components/Filter/Filter';
 import SectionsSidebar from '../../components/SectionsSidebar/SectionsSidebar';
 import FrameList from '../../components/FrameList/FrameList';
+
+// Слайси та селектори
 import { importFrames } from '../../redux/frames/framesSlice';
 import { selectFrames } from '../../redux/frames/framesSlice';
 import { addSection } from '../../redux/sections/sectionsSlice';
 import { selectSections } from '../../redux/sections/sectionsSlice';
+
+// Стилі
 import css from './FramesPage.module.css';
 
 export default function FramesPage() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const frames = useSelector(selectFrames);
   const sections = useSelector(selectSections);
 
   // Стан для фонових кружечків
   const [circles, setCircles] = useState([]);
 
+  // Рефи для запобігання подвійному завантаженню
   const sectionsLoaded = useRef(false);
   const framesLoaded = useRef(false);
 
-  // Генерація випадкових сяючих кружечків (лише білі)
+  // Генерація випадкових сяючих кружечків
   useEffect(() => {
     const newCircles = [];
     for (let i = 0; i < 30; i++) {
@@ -45,7 +54,7 @@ export default function FramesPage() {
       });
     }
     setCircles(newCircles);
-  }, []); // Пустий масив – виконується лише один раз при монтуванні
+  }, []); // Пустий масив – виконується один раз
 
   // Завантаження розділів
   useEffect(() => {
@@ -60,8 +69,8 @@ export default function FramesPage() {
           data.forEach((section) => dispatch(addSection(section)));
         })
         .catch((err) => {
-          console.error('error:', err);
-          sectionsLoaded.current = false; // дозволяємо повторну спробу при помилці
+          console.error('Помилка завантаження розділів:', err);
+          sectionsLoaded.current = false; // дозволяємо повторну спробу
         });
     }
   }, [dispatch, sections.length]);
@@ -79,7 +88,7 @@ export default function FramesPage() {
           dispatch(importFrames(data));
         })
         .catch((err) => {
-          console.error('error:', err);
+          console.error('Помилка завантаження фреймів:', err);
           framesLoaded.current = false;
         });
     }
@@ -87,18 +96,21 @@ export default function FramesPage() {
 
   return (
     <div className={css.container}>
-      {/* Фонові сяючі кружечки */}
+      {/* Фонові кружечки */}
       <div className={css.circlesBackground}>
         {circles.map((circle) => (
           <div key={circle.id} className={css.circle} style={circle.style} />
         ))}
       </div>
 
+      {/* Ліва панель розділів */}
       <SectionsSidebar />
+
+      {/* Основний контент */}
       <div className={css.main}>
-        <h1 className={css.title}>QUANTUM BASE</h1>
+        <h1 className={css.title}>{t('title')}</h1>
         <div className={css.searchContainer}>
-          <Filter className={css.searchInput} />
+          <Filter className={css.searchInput} placeholder={t('searchPlaceholder')} />
         </div>
         <FrameList />
       </div>

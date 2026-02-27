@@ -1,7 +1,7 @@
 // src/redux/frames/framesSlice.js
 import { createSlice, nanoid, createSelector } from '@reduxjs/toolkit';
 import { selectFilter } from '../filterSlice';
-import { selectSelectedSectionId } from '../uiSlice';
+import { selectSelectedSectionTitle } from '../uiSlice';
 
 const initialState = {
   items: [],
@@ -15,13 +15,13 @@ const framesSlice = createSlice({
       reducer(state, action) {
         state.items.push(action.payload);
       },
-      prepare({ title, info, sectionId }) {
+      prepare({ title, info, sectionTitle }) {
         return {
           payload: {
             id: nanoid(),
             title,
             info,
-            sectionId: sectionId || null,
+            sectionTitle: sectionTitle || null,
           },
         };
       },
@@ -30,11 +30,11 @@ const framesSlice = createSlice({
       state.items = state.items.filter((item) => item.id !== action.payload);
     },
     importFrames(state, action) {
-      const newFrames = action.payload.map(({ title, info, sectionId }) => ({
+      const newFrames = action.payload.map(({ title, info, sectionTitle }) => ({
         id: nanoid(),
         title,
         info,
-        sectionId: sectionId || null,
+        sectionTitle: sectionTitle || null,
       }));
       state.items.push(...newFrames);
     },
@@ -48,15 +48,14 @@ export const { addFrame, deleteFrame, importFrames, clearFrames } = framesSlice.
 
 export const selectFrames = (state) => state.frames.items;
 
-export const selectFilteredFramesBySection = createSelector(
-  [selectFrames, selectFilter, selectSelectedSectionId],
-  (frames, filter, selectedSectionId) => {
+// Селектор для фільтрації за назвою розділу
+export const selectFilteredFramesBySectionTitle = createSelector(
+  [selectFrames, selectFilter, selectSelectedSectionTitle],
+  (frames, filter, selectedTitle) => {
     const normalizedFilter = filter.toLowerCase().trim();
     return frames.filter((frame) => {
-      const matchesFilter =
-        normalizedFilter === '' || frame.title.toLowerCase().includes(normalizedFilter);
-      const matchesSection =
-        selectedSectionId === null || frame.sectionId === selectedSectionId;
+      const matchesFilter = normalizedFilter === '' || frame.title.toLowerCase().includes(normalizedFilter);
+      const matchesSection = selectedTitle === null || frame.sectionTitle === selectedTitle;
       return matchesFilter && matchesSection;
     });
   }

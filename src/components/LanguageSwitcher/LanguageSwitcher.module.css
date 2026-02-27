@@ -1,0 +1,28 @@
+/* src/components/LanguageSwitcher/LanguageSwitcher.module.css */
+.switcher {
+  display: flex;
+  gap: 5px;
+  margin-left: 20px; /* Відступ, щоб не прилипало до інших елементів */
+}
+
+.button {
+  background: transparent;
+  border: 1px solid #ff66ff; /* Неонова фіолетова обводка */
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: rgba(255, 102, 255, 0.2);
+  box-shadow: 0 0 8px #ff66ff;
+}
+
+.active {
+  background-color: #ff66ff;
+  color: black;
+  box-shadow: 0 0 12px #ff66ff;
+}

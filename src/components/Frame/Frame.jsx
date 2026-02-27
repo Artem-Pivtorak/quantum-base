@@ -1,7 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import css from './Frame.module.css';
 
 const Frame = ({ data }) => {
+  const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
   const [isTruncated, setIsTruncated] = useState(false);
   const textRef = useRef(null);
@@ -34,10 +36,9 @@ const Frame = ({ data }) => {
       </div>
       {isTruncated && (
         <button onClick={() => setExpanded(!expanded)} className={css.toggleButton}>
-          {expanded ? 'More...' : 'hide'}
+          {expanded ? t('showLess') : t('readMore')}
         </button>
       )}
-      {/* Кнопка видалення видалена */}
     </div>
   );
 };
