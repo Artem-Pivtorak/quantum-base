@@ -20,7 +20,7 @@ const SectionsSidebar = () => {
           onClick={() => dispatch(setSelectedSectionTitle(null))}
         >
           <span className={css.sectionImage}>
-           <img src={`${import.meta.env.BASE_URL}images/brain.png`} alt={t('allKnowledge')} />
+           <img src={`${import.meta.env.BASE_URL}images/brain.png`} alt="brain" />
           </span>
           <span className={css.sectionTitle}>{t('allKnowledge')}</span>
         </li>
