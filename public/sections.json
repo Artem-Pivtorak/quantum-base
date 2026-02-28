@@ -1,11 +1,11 @@
 [
-  { "title": "plugins", "image": "/images/storage-download-symbol.png" },
-  { "title": "davinci", "image": "/images/davinci-resolve.png" },
-  { "title": "blender", "image": "/images/blender.png" },
-  { "title": "premier", "image": "/images/adobe-premier.png" },
-  { "title": "photoshop", "image": "/images/adobe-photoshop.png" },
-  { "title": "after-effects", "image": "/images/adobe-after-effects.png" },
+  { "title": "plugins", "image": "images/storage-download-symbol.png" },
+  { "title": "davinci", "image": "images/davinci-resolve.png" },
+  { "title": "blender", "image": "images/blender.png" },
+  { "title": "premier", "image": "images/adobe-premier.png" },
+  { "title": "photoshop", "image": "images/adobe-photoshop.png" },
+  { "title": "after-effects", "image": "images/adobe-after-effects.png" },
   { "title": "info-of-oll", "image": "" },
-  { "title": "site", "image": "/images/online-social-media.png" }
+  { "title": "site", "image": "images/online-social-media.png" }
 ]
 

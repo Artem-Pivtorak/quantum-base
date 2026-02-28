@@ -30,7 +30,7 @@ const SectionsSidebar = () => {
             className={`${css.sectionItem} ${selectedTitle === section.title ? css.active : ''}`}
             onClick={() => dispatch(setSelectedSectionTitle(section.title))}
           >
-            <img src={section.image} alt={section.title} className={css.sectionImage} />
+            <img src={`${import.meta.env.BASE_URL}${section.image}`} alt={section.title} className={css.sectionImage} />
             <span className={css.sectionTitle}>{section.title}</span>
           </li>
         ))}

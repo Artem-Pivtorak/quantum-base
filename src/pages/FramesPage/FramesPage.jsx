@@ -29,16 +29,18 @@ export default function FramesPage() {
   const sectionsLoaded = useRef(false);
   const framesLoaded = useRef(false);
 
-  // Генерація випадкових сяючих кружечків
+  const baseUrl = import.meta.env.BASE_URL || '/'; // отримуємо '/quantum-base/' з конфігурації
+
+  // Генерація фонових кружечків
   useEffect(() => {
     const newCircles = [];
     for (let i = 0; i < 30; i++) {
-      const size = Math.random() * 60 + 20; // 20–80px
+      const size = Math.random() * 60 + 20;
       const left = Math.random() * 100;
       const top = Math.random() * 100;
       const delay = Math.random() * 10;
-      const duration = Math.random() * 20 + 15; // 15–35s
-      const opacity = Math.random() * 0.5 + 0.3; // 0.3–0.8
+      const duration = Math.random() * 20 + 15;
+      const opacity = Math.random() * 0.5 + 0.3;
       newCircles.push({
         id: i,
         style: {
@@ -49,18 +51,18 @@ export default function FramesPage() {
           animationDelay: delay + 's',
           animationDuration: duration + 's',
           background: `rgba(255, 255, 255, ${opacity})`,
-          boxShadow: `0 0 ${size/2}px rgba(255, 255, 255, 0.5), 0 0 ${size}px rgba(255, 255, 255, 0.3)`,
+          boxShadow: `0 0 ${size / 2}px rgba(255, 255, 255, 0.5), 0 0 ${size}px rgba(255, 255, 255, 0.3)`,
         },
       });
     }
     setCircles(newCircles);
-  }, []); // Пустий масив – виконується один раз
+  }, []);
 
   // Завантаження розділів
   useEffect(() => {
     if (sections.length === 0 && !sectionsLoaded.current) {
       sectionsLoaded.current = true;
-      fetch('/sections.json')
+      fetch(`${baseUrl}sections.json`)
         .then((res) => {
           if (!res.ok) throw new Error('sections.json not found');
           return res.json();
@@ -70,16 +72,16 @@ export default function FramesPage() {
         })
         .catch((err) => {
           console.error('Помилка завантаження розділів:', err);
-          sectionsLoaded.current = false; // дозволяємо повторну спробу
+          sectionsLoaded.current = false;
         });
     }
-  }, [dispatch, sections.length]);
+  }, [dispatch, sections.length, baseUrl]);
 
   // Завантаження фреймів
   useEffect(() => {
     if (frames.length === 0 && !framesLoaded.current) {
       framesLoaded.current = true;
-      fetch('/frames.json')
+      fetch(`${baseUrl}frames.json`)
         .then((res) => {
           if (!res.ok) throw new Error('frames.json not found');
           return res.json();
@@ -92,7 +94,7 @@ export default function FramesPage() {
           framesLoaded.current = false;
         });
     }
-  }, [dispatch, frames.length]);
+  }, [dispatch, frames.length, baseUrl]);
 
   return (
     <div className={css.container}>
