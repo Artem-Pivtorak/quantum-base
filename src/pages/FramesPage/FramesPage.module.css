@@ -31,18 +31,33 @@
   100% { transform: translate(0, 0) scale(1); }
 }
 
-/* Основний блок (шапка + список) */
 .main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 0;  /* ДУЖЕ ВАЖЛИВО для flex-елементів */
-  height: 105%;
+  min-height: 0;  /* критично для flex-елементів */
   padding: 20px;
-  overflow: hidden; /* щоб сам .main не прокручувався */
+  overflow: hidden;
   position: relative;
   z-index: 1;
   color: white;
+}
+
+.listContainer {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  padding-right: 5px;
+  scroll-behavior: smooth;
+}
+
+/* Інші стилі залишаються */
+
+/* На мобільних зменшуємо відступи */
+@media (max-width: 768px) {
+  .main {
+    padding: 10px;
+  }
 }
 
 
@@ -85,12 +100,7 @@
   box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 0 40px #ff66ff;
 }
 
-.listContainer {
-  flex: 1;
-  overflow-y: auto;
-  min-height: 0;      /* критично для flex-контейнера */
-  padding-right: 5px;
-}
+
 
 /* Стилізація скролбару (для краси) */
 .listContainer::-webkit-scrollbar {

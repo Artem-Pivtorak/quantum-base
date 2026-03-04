@@ -1,4 +1,3 @@
-// src/redux/frames/framesSlice.js
 import { createSlice, nanoid, createSelector } from '@reduxjs/toolkit';
 import { selectFilter } from '../filterSlice';
 import { selectSelectedSectionTitle } from '../uiSlice';
@@ -38,12 +37,13 @@ const framesSlice = createSlice({
       }));
       state.items.push(...newFrames);
     },
-    clearFrames(state) {
+    clearFrames(state) { // ← це правильно, всередині reducers
       state.items = [];
     },
   },
 });
 
+// Експортуємо actions (один раз)
 export const { addFrame, deleteFrame, importFrames, clearFrames } = framesSlice.actions;
 
 export const selectFrames = (state) => state.frames.items;

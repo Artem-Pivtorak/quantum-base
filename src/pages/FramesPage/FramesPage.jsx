@@ -1,35 +1,31 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-
-// Компоненти
 import Filter from '../../components/Filter/Filter';
 import SectionsSidebar from '../../components/SectionsSidebar/SectionsSidebar';
 import FrameList from '../../components/FrameList/FrameList';
-
-// Слайси та селектори
-import { importFrames } from '../../redux/frames/framesSlice';
+import { importFrames, clearFrames } from '../../redux/frames/framesSlice'; // додано clearFrames
 import { selectFrames } from '../../redux/frames/framesSlice';
 import { addSection } from '../../redux/sections/sectionsSlice';
 import { selectSections } from '../../redux/sections/sectionsSlice';
-
-// Стилі
 import css from './FramesPage.module.css';
 
 export default function FramesPage() {
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
   const frames = useSelector(selectFrames);
   const sections = useSelector(selectSections);
-
-  // Стан для фонових кружечків
   const [circles, setCircles] = useState([]);
-
-  // Рефи для запобігання подвійному завантаженню
   const sectionsLoaded = useRef(false);
-  const framesLoaded = useRef(false);
+  const [currentLang, setCurrentLang] = useState(i18n.language.startsWith('uk') ? 'uk' : 'en');
 
-  const baseUrl = import.meta.env.BASE_URL || '/'; // отримуємо '/quantum-base/' з конфігурації
+  // Відстежуємо зміну мови
+  useEffect(() => {
+    const lang = i18n.language.startsWith('uk') ? 'uk' : 'en';
+    if (lang !== currentLang) {
+      setCurrentLang(lang);
+    }
+  }, [i18n.language, currentLang]);
 
   // Генерація фонових кружечків
   useEffect(() => {
@@ -51,64 +47,48 @@ export default function FramesPage() {
           animationDelay: delay + 's',
           animationDuration: duration + 's',
           background: `rgba(255, 255, 255, ${opacity})`,
-          boxShadow: `0 0 ${size / 2}px rgba(255, 255, 255, 0.5), 0 0 ${size}px rgba(255, 255, 255, 0.3)`,
+          boxShadow: `0 0 ${size/2}px rgba(255, 255, 255, 0.5), 0 0 ${size}px rgba(255, 255, 255, 0.3)`,
         },
       });
     }
     setCircles(newCircles);
   }, []);
 
-  // Завантаження розділів
+  // Завантаження розділів (один раз)
   useEffect(() => {
     if (sections.length === 0 && !sectionsLoaded.current) {
       sectionsLoaded.current = true;
-      fetch(`${baseUrl}sections.json`)
-        .then((res) => {
-          if (!res.ok) throw new Error('sections.json not found');
-          return res.json();
-        })
-        .then((data) => {
-          data.forEach((section) => dispatch(addSection(section)));
-        })
-        .catch((err) => {
-          console.error('Помилка завантаження розділів:', err);
-          sectionsLoaded.current = false;
-        });
+      fetch(`${import.meta.env.BASE_URL}sections.json`)
+        .then(res => res.json())
+        .then(data => data.forEach(section => dispatch(addSection(section))))
+        .catch(err => console.error('Error loading sections:', err));
     }
-  }, [dispatch, sections.length, baseUrl]);
+  }, [dispatch, sections.length]);
 
-  // Завантаження фреймів
+  // Завантаження фреймів відповідно до мови
   useEffect(() => {
-    if (frames.length === 0 && !framesLoaded.current) {
-      framesLoaded.current = true;
-      fetch(`${baseUrl}frames.json`)
-        .then((res) => {
-          if (!res.ok) throw new Error('frames.json not found');
-          return res.json();
-        })
-        .then((data) => {
-          dispatch(importFrames(data));
-        })
-        .catch((err) => {
-          console.error('Помилка завантаження фреймів:', err);
-          framesLoaded.current = false;
-        });
-    }
-  }, [dispatch, frames.length, baseUrl]);
+    // Очищаємо попередні фрейми перед завантаженням нових
+    dispatch(clearFrames());
+
+    fetch(`${import.meta.env.BASE_URL}frames-${currentLang}.json`)
+      .then(res => {
+        if (!res.ok) throw new Error(`frames-${currentLang}.json not found`);
+        return res.json();
+      })
+      .then(data => {
+        dispatch(importFrames(data));
+      })
+      .catch(err => console.error('Error loading frames:', err));
+  }, [dispatch, currentLang]);
 
   return (
     <div className={css.container}>
-      {/* Фонові кружечки */}
       <div className={css.circlesBackground}>
-        {circles.map((circle) => (
+        {circles.map(circle => (
           <div key={circle.id} className={css.circle} style={circle.style} />
         ))}
       </div>
-
-      {/* Ліва панель розділів */}
       <SectionsSidebar />
-
-      {/* Основний контент */}
       <div className={css.main}>
         <h1 className={css.title}>{t('title')}</h1>
         <div className={css.searchContainer}>

@@ -1,9 +1,15 @@
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
+import css from './AppBar.module.css';
 
-const AppBar = () => {
+const AppBar = ({ toggleSidebar, sidebarOpen }) => {
   return (
-    <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', padding: '10px' }}>
-      <LanguageSwitcher />
+    <header className={css.header}>
+      <button className={css.burger} onClick={toggleSidebar}>
+        {sidebarOpen ? '✕' : '☰'}
+      </button>
+      <div className={css.right}>
+        <LanguageSwitcher />
+      </div>
     </header>
   );
 };

@@ -1,14 +1,16 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next'; // додано
 import { selectFilteredFramesBySectionTitle } from '../../redux/frames/framesSlice';
 import Frame from '../Frame/Frame';
 import css from './FrameList.module.css';
 
 const FrameList = () => {
+  const { t } = useTranslation(); // додано
   const frames = useSelector(selectFilteredFramesBySectionTitle);
   const listRef = useRef(null);
   const frameRefs = useRef([]);
-  const [scrollTrigger, setScrollTrigger] = useState(0); // просто для ререндеру
+  const [scrollTrigger, setScrollTrigger] = useState(0);
 
   // Прив'язка рефів
   useEffect(() => {
@@ -18,7 +20,7 @@ const FrameList = () => {
   // Слухач скролу
   useEffect(() => {
     const handleScroll = () => {
-      setScrollTrigger(prev => prev + 1); // викликає ререндер
+      setScrollTrigger(prev => prev + 1);
     };
     const container = listRef.current;
     container?.addEventListener('scroll', handleScroll);
@@ -33,15 +35,19 @@ const FrameList = () => {
 
     const containerRect = container.getBoundingClientRect();
     const frameRect = frameEl.getBoundingClientRect();
-    const relativeTop = frameRect.top - containerRect.top; // позиція відносно контейнера
+    const relativeTop = frameRect.top - containerRect.top;
 
     if (relativeTop < 0) {
-      // Фрейм виїхав за верхній край
       const progress = Math.min(1, Math.abs(relativeTop) / frameRect.height);
       return Math.max(0.5, 1 - progress * 0.5);
     }
     return 1;
-  }, [scrollTrigger]); // залежність від scrollTrigger оновлює масштаб при скролі
+  }, [scrollTrigger]);
+
+  // Якщо фреймів немає, показуємо повідомлення
+  if (frames.length === 0) {
+    return <div className={css.empty}>{t('noInfo')}</div>;
+  }
 
   return (
     <div className={css.listContainer} ref={listRef}>
