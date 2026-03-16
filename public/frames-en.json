@@ -25,42 +25,160 @@
 { "title": "After Effects", "info": "Professional program for creating video effects and animations.", "sectionTitle": "after-effects" },
 { "title": "Premiere Pro", "info": "Video editing program, a tool with high-quality editing and support for various formats.", "sectionTitle": "premiere" },
 { "title": "Photoshop", "info": "Image editing program for creating graphics and creating graphics.", "sectionTitle": "photoshop" },
-{ "title": "DaVinci Resolve", "info": "Video editing software, a tool with support for a large number of graphics, effects and cinematics.", "sectionTitle": "davinci" },
-{ "title": "Blender", "info": "3D modeling, animation and visual effects software.", "sectionTitle": "blender" },
-{ "title": "After Effects GoodbyeGreenScreen", "info": "A plugin for After Effects that automatically removes the background from the video.", "sectionTitle": "after-effects" },
-{ "title": "Premiere Pro Mister Horse", "info": "A plugin for audio, video, audio transitions and animations.", "sectionTitle": "premiere" },
-{ "title": "IT Postman", "info": "A platform for testing APIs and working with HTTP requests.", "sectionTitle": "info-of-oll" },
-{ "title": "UIUX Design", "info": "", "sectionTitle": "info-of-oll" }, 
-{ "title": "Video/photo Unreal Engine 5", "info": "", "sectionTitle": "info-of-oll" },
-{ "title": "VSCode", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Bitcoin", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Intel Core", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "AMD", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Nvidia", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Oled", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Amoled", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Ips", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Video/photo VFX", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Video/photo CJI", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Fps", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Gpu", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Ram", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Cpu", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Copilot", "info": "", "sectionTitle": "site" },
-  { "title": "Windows", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Linux", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "MaCos", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Video/photo Diaphragm", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Video/photo Iso", "info": "", "sectionTitle": "info-of-oll" },
-  { "title": "Bandlab", "info": "", "sectionTitle": "site" },
-  { "title": "Elevenlabs", "info": "", "sectionTitle": "site" },
-  { "title": "Adobe Podcast", "info": "", "sectionTitle": "site" },
-  { "title": "", "info": "", "sectionTitle": "" },
-  { "title": "", "info": "", "sectionTitle": "" },
-  { "title": "", "info": "", "sectionTitle": "" },
-  { "title": "", "info": "", "sectionTitle": "" },
-  { "title": "", "info": "", "sectionTitle": "" },
-  { "title": "", "info": "", "sectionTitle": "" },
-  { "title": "", "info": "", "sectionTitle": "" }
-
+{"title": "DaVinci Resolve", "info": "Professional software for non-linear video editing, color correction, visual effects creation and post-production. Integrates advanced tools for working with graphics, animation and audio (Fairlight).", "sectionTitle": "davinci"},
+{
+"title": "Blender",
+"info": "A free and open source 3D modeling package that includes tools for animation, rendering, VFX creation, sculpting and simulations. Supports the full cycle of 3D content creation.",
+"sectionTitle": "blender"
+},
+{
+"title": "After Effects GoodbyeGreenScreen",
+"info": "A plug-in based on artificial intelligence for automatic removal and replacement of backgrounds in videos. The latest version (v2.2.26) adds support for NVIDIA 5xxx series and fixes conflicts with other third-party plug-ins. Supports After Effects and Premiere Pro 2022-2025 [citation:1].",
+"sectionTitle": "after-effects"
+},
+{
+"title": "Premiere Pro Mister Horse",
+"info": "An advanced set of tools and plugins for Premiere Pro and After Effects, including over 80 features: audio automation, animation creation, smooth transitions, text and timeline work. Speeds up routine editing tasks.",
+"sectionTitle": "premiere"
+},
+{
+"title": "IT Postman",
+"info": "A platform for testing APIs and working with HTTP requests. Allows you to create, test and document requests to servers, automate checks and manage development environments.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "UIUX Design",
+"info": "A design field that encompasses the design of user interfaces (UI) and user interaction with the product (UX). Includes wireframing, prototyping, usability testing, and design system development.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Video/photo Unreal Engine 5",
+"info": "A game engine from Epic Games used to create photorealistic 3D worlds in film and video games. UE5 offers Nanite (high detail without loss of performance) and Lumen (dynamic global illumination) technologies. In 2026, version 5.8 is expected to be released in June, and the engine's technologies are becoming the standard for the AAA industry [citation:2][citation:5][citation:7].",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "VSCode",
+"info": "A free code editor from Microsoft with support for hundreds of programming languages. It has a built-in terminal, Git integration, a debugger, and a large library of extensions for web development, DevOps, and other areas.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Bitcoin",
+"info": "The first and most capitalized cryptocurrency based on blockchain technology. It is used as a digital asset, a means of saving and a payment instrument independent of central banks.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Intel Core",
+"info": "A line of processors for desktops, laptops and servers. Includes the i3, i5, i7, i9 series and the latest generations (for example, Core Ultra), which determine performance in games, multimedia work and complex calculations.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "AMD",
+"info": "An American manufacturer of processors (Ryzen, EPYC), graphics cards (Radeon) and chips for AI. In October 2025, it entered into agreement with OpenAI to supply chips for data centers, and financial results for 2025 show revenue growth of 35.59% (9.25 billion USD) [citation:3][citation:6].",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Nvidia",
+"info": "A technology company, a leader in the production of graphics processors (GPUs) for games and professional tasks. Also dominates the market of accelerators for artificial intelligence (A100, H100, B200 series) with CUDA architecture.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Oled",
+"info": "A technology for screens based on organic light-emitting diodes, where each pixel emits light independently. Provides perfect black color, high contrast and wide viewing angles. Used in TVs, smartphones and monitors.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Amoled",
+"info": "A type of OLED technology with an active matrix on thin-film transistors (TFT). It is characterized by fast response, energy efficiency and bright colors. It is widely used in mobile devices.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Ips",
+"info": "LCD matrix technology that provides high color accuracy and a stable image at angles up to 178 degrees. Popular in professional monitors for design and video editing due to natural color reproduction.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Video/photo VFX", 
+"info": "Visual Effects (Visual Effects) is the process of creating or modifying images and videos using computer graphics. Includes 3D rendering, compositing, particle simulation (fire, smoke) and adding CGI objects to the frame.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Video/photo CJI",
+"info": "Probably referring to CGI (Computer-Generated Imaginery) — images or videos created entirely by a computer. Used to create fantastic creatures, locations, and special effects that cannot be captured on camera.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Fps",
+"info": "The number of frames per second (Frames Per Second). In video, it determines the smoothness of movement (standards: 24, 30, 60 FPS). In computer games, a high FPS (60+) is critical for fast response and comfort.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Gpu",
+"info": "Graphics processor — a specialized electronic circuit for processing images and video. Responsible for rendering graphics in games, accelerating editing, and with 3D. Also used for machine learning and computing.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Ram",
+"info": "Random Access Memory — temporary storage of data that the system is currently accessing. Affects the speed of programs and the ability to multitask. 16-32 GB or more is recommended for video editing.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Cpu",
+"info": "The central processing unit — the main computing component of the computer. Executes program instructions, controls the operation of all devices and determines the overall speed of the system. Modern CPUs have up to 16-32 cores.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Copilot",
+"info": "A Microsoft AI assistant integrated into Windows and other products. Helps users write code, create texts, answer questions and perform tasks in the system via a chat interface.",
+"sectionTitle": "site"
+},
+{
+"title": "Windows",
+"info": "A family of operating systems from Microsoft, the most common OS for personal computers. The latest versions (Windows 10, 11) support modern games, work programs and cloud services.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Linux",
+"info": "A family of open Unix-like operating systems. Used on servers, supercomputers and in development environments due to its stability, security and freeness. Popular distributions: Ubuntu, Debian, Fedora.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "MaCos",
+"info": "An operating system for Mac computers from Apple. Optimized for working with Apple hardware (M1, M2 chips, M3). Widely used in design, video editing and music production.",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Video/photo Diaphragm",
+"info": "A diaphragm is a mechanism in a camera lens that regulates the amount of light reaching the sensor. It affects the depth of field (background blur) and exposure of the frame. It is indicated by the f number (for example, f/1.8).",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Video/photo Iso",
+"info": "The light sensitivity of the camera sensor. A low value (ISO 100) gives a clear image, a high one (ISO 3200+) allows you to shoot in the dark, but increases digital noise (graininess).",
+"sectionTitle": "info-of-oll"
+},
+{
+"title": "Bandlab",
+"info": "A cloud-based platform for music creation and collaboration between musicians. Offers an online studio, tools for recording, mixing and mastering tracks, as well as a social network for artists.",
+"sectionTitle": "site"
+},
+{
+"title": "Elevenlabs",
+"info": "A platform for speech synthesis based on artificial intelligence. Generates a realistic voice with a given emotionality and intonation. Used for dubbing videos, audiobooks and creating virtual assistants.",
+"sectionTitle": "site"
+},
+{
+"title": "Adobe Podcast",
+"info": "A web service from Adobe to improve the quality of audio recordings. Uses AI to automatically remove noise, normalize volume and enhance voice. Allows you to create podcasts with studio recording quality.",
+"sectionTitle": "site"
+},
+{
+"title": "IT Zeabur",
+"info": "A service for deploying and hosting web applications. Simplifies the process deployment, supports various programming languages ​​and automates infrastructure setup for developers.",
+"sectionTitle": "site"
+},
+{
+"title": "IT Installing git",
+"info": "The process of installing and configuring Git - a distributed version control system. It is used by developers to track code changes, collaborate on projects and store code in repositories (GitHub, GitLab).",
+"sectionTitle": "site"
+}
 ]

@@ -54,7 +54,9 @@ export const selectFilteredFramesBySectionTitle = createSelector(
   (frames, filter, selectedTitle) => {
     const normalizedFilter = filter.toLowerCase().trim();
     return frames.filter((frame) => {
-      const matchesFilter = normalizedFilter === '' || frame.title.toLowerCase().includes(normalizedFilter);
+      const matchesFilter = normalizedFilter === '' || 
+        frame.title.toLowerCase().includes(normalizedFilter) || 
+        frame.info.toLowerCase().includes(normalizedFilter);
       const matchesSection = selectedTitle === null || frame.sectionTitle === selectedTitle;
       return matchesFilter && matchesSection;
     });
